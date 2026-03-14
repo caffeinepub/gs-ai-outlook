@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* Light mode */
+    --background: 0.97 0.005 255;
+    --foreground: 0.15 0.02 260;
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 260;
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 260;
+    --primary: 0.52 0.15 200;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.93 0.01 255;
+    --secondary-foreground: 0.15 0.02 260;
+    --muted: 0.93 0.01 255;
+    --muted-foreground: 0.50 0.02 260;
+    --accent: 0.93 0.01 255;
+    --accent-foreground: 0.15 0.02 260;
+    --destructive: 0.58 0.24 27;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.88 0.01 255;
+    --input: 0.88 0.01 255;
+    --ring: 0.52 0.15 200;
+    --chart-1: 0.75 0.13 200;
+    --chart-2: 0.65 0.16 160;
+    --chart-3: 0.60 0.14 280;
+    --chart-4: 0.80 0.15 60;
+    --chart-5: 0.65 0.20 30;
+    --sidebar: 0.12 0.025 260;
+    --sidebar-foreground: 0.85 0.01 260;
+    --sidebar-primary: 0.75 0.14 200;
+    --sidebar-primary-foreground: 0.10 0.02 260;
+    --sidebar-accent: 0.22 0.03 260;
+    --sidebar-accent-foreground: 0.85 0.01 260;
+    --sidebar-border: 0.22 0.03 260;
+    --sidebar-ring: 0.75 0.14 200;
+  }
+
+  .dark {
+    --background: 0.11 0.018 260;
+    --foreground: 0.93 0.01 260;
+    --card: 0.155 0.022 260;
+    --card-foreground: 0.93 0.01 260;
+    --popover: 0.18 0.025 260;
+    --popover-foreground: 0.93 0.01 260;
+    --primary: 0.78 0.14 200;
+    --primary-foreground: 0.10 0.02 260;
+    --secondary: 0.20 0.025 260;
+    --secondary-foreground: 0.90 0.01 260;
+    --muted: 0.20 0.025 260;
+    --muted-foreground: 0.55 0.03 260;
+    --accent: 0.23 0.03 260;
+    --accent-foreground: 0.90 0.01 260;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.26 0.025 260;
+    --input: 0.22 0.025 260;
+    --ring: 0.78 0.14 200;
+    --chart-1: 0.78 0.14 200;
+    --chart-2: 0.70 0.16 160;
+    --chart-3: 0.65 0.15 280;
+    --chart-4: 0.82 0.15 60;
+    --chart-5: 0.70 0.20 30;
+    --sidebar: 0.08 0.015 260;
+    --sidebar-foreground: 0.85 0.01 260;
+    --sidebar-primary: 0.78 0.14 200;
+    --sidebar-primary-foreground: 0.10 0.02 260;
+    --sidebar-accent: 0.18 0.025 260;
+    --sidebar-accent-foreground: 0.85 0.01 260;
+    --sidebar-border: 0.20 0.025 260;
+    --sidebar-ring: 0.78 0.14 200;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: oklch(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .sidebar-glow {
+    box-shadow: inset -1px 0 0 oklch(var(--sidebar-border)), 1px 0 20px oklch(var(--sidebar-primary) / 0.05);
+  }
+
+  .email-row {
+    transition: background-color 0.15s ease;
+  }
+
+  .email-row:hover {
+    background-color: oklch(var(--accent) / 0.6);
+  }
+
+  .email-row.selected {
+    background-color: oklch(var(--primary) / 0.12);
+    border-left: 2px solid oklch(var(--primary));
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: oklch(var(--border));
+    border-radius: 2px;
+  }
+
+  .priority-high {
+    background-color: oklch(0.65 0.22 25 / 0.15);
+    color: oklch(0.75 0.22 25);
+    border: 1px solid oklch(0.65 0.22 25 / 0.3);
+  }
+
+  .priority-medium {
+    background-color: oklch(0.82 0.15 80 / 0.15);
+    color: oklch(0.72 0.18 80);
+    border: 1px solid oklch(0.82 0.15 80 / 0.3);
+  }
+
+  .priority-low {
+    background-color: oklch(0.70 0.16 160 / 0.15);
+    color: oklch(0.65 0.16 160);
+    border: 1px solid oklch(0.70 0.16 160 / 0.3);
+  }
+}
