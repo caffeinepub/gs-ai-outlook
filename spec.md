@@ -1,29 +1,25 @@
 # GS AI Outlook
 
 ## Current State
-New project. No existing code.
+A full-stack email/productivity web app running on the Internet Computer with React frontend and Motoko backend. Has inbox, calendar, tasks, and AI simulation features. No PWA support currently.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Full-stack email & productivity app with authorization
-- Inbox module: email list with priority categories (Action Required, Waiting, Newsletters, Other), unread counts, sender/subject/preview/timestamp
-- Email detail view: thread reading, AI one-click summarization (simulated), reply/forward actions
-- Compose modal: recipient, subject, body, AI tone adjustment options (Professional, Casual, Concise) that rewrite body text (simulated)
-- Calendar module: monthly/weekly view, events list, create event
-- Tasks module: task list with due dates, priorities, completion toggle
-- AI Copilot sidebar: smart suggestions panel showing contextual tips (simulated)
-- Sidebar navigation: Mail, Calendar, Tasks, Notes
-- Dark/Light theme toggle
-- User authentication via authorization component
-- Sample seed data for demo purposes
+- `public/manifest.json` with app name, icons, theme color, display mode standalone, start URL
+- `public/sw.js` service worker with basic offline caching strategy (cache-first for static assets)
+- PWA meta tags in `index.html`: theme-color, apple-mobile-web-app-capable, apple-touch-icon, manifest link
+- App icons: 192x192 and 512x512 PNG icons in public/
 
 ### Modify
-N/A
+- `index.html` to include manifest link, PWA meta tags, and service worker registration script
+- `vite.config.js` no changes needed (manual PWA, no vite-plugin-pwa)
 
 ### Remove
-N/A
+- Nothing
 
 ## Implementation Plan
-1. Backend: User-scoped data for emails, calendar events, tasks. CRUD operations for each. AI simulation endpoints (return pre-written summaries/rewrites). Seed demo data on first load.
-2. Frontend: Three-pane layout (sidebar nav, list panel, detail panel). Inbox with category tabs. Email detail with AI summary button. Compose modal with tone selector. Calendar with event grid. Tasks checklist. Theme toggle in header. Authorization gating.
+1. Add manifest.json to src/frontend/public/
+2. Add service worker sw.js to src/frontend/public/
+3. Update index.html with manifest link, PWA meta tags, SW registration
+4. Place generated icons in src/frontend/public/
